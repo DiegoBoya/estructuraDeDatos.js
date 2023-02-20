@@ -84,18 +84,42 @@ class HashTable {
         console.log('no existe ningun elemento con el Key ' + key);
         return undefined;
     }
+
+    getAllKeys() {
+        let keys = [];
+        for (let i = 0; i < this.data.length; i++) {
+            if (this.data[i]) { // if (this.data[i].length > 0) {
+                for (let j = 0; j < this.data[i].length; j++) {
+                    let current = this.data[i];
+                    console.log('se agrega al array de keys a ' + current[j][0]);
+                    keys.push(current[j][0]);
+                }
+            } else {
+                // la fila esta vacia
+            }
+        }
+        return keys;
+    }
 }
 
 //creamos el array con 50 espacios libres
 const myHashTable = new HashTable(50);
 myHashTable.set('Diego', 1990);
 myHashTable.set('Mariana', 1998);
-// myHashTable.set('Diego', 1992);
+myHashTable.set("Miranda", 2000)
+myHashTable.set("Cat", 2010)
 console.log(myHashTable.set('Alejandra', 2000));
 
-// prueba de borrado de elemento
+/* prueba de elemento repetido  
+// myHashTable.set('Diego', 1992);
+*/
+
+// prueba de borrado de elemento 
+/*
 myHashTable.delete('Diego');
 myHashTable.delete('Mariana');
 console.log(myHashTable.delete('Mariana'));
 //console.log(myHashTable.delete('Diegoooo'));
-console.log(myHashTable);
+console.log(myHashTable); */
+
+console.log(myHashTable.getAllKeys());
