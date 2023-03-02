@@ -58,6 +58,38 @@ class BinarySearchTree {
 
     }
 
+    // Buesca el valor y devuelve toda su ramificacion
+    search(value) {
+        let firstNode = this.root;
+        while (true) {
+            if (firstNode === null) {
+                return "No esta en el arbol";
+            }
+            if (value === firstNode.value) {
+                return firstNode;
+            } else if (value < firstNode.value) {
+                firstNode = firstNode.left;
+            } else {
+                firstNode = firstNode.right;
+            }
+        }
+    }
+
+    // utiliza recursividad
+    search2(value, tree = this.root) {
+
+        if (tree == null) {
+            return "El elemento no se encuentra.";
+        }
+        else if(value > tree.value) {
+            return this.search(value, tree.right);
+        }
+        else if(value < tree.value) {
+            return this.search(value, tree.left);
+        } else {
+            return "¡El elemento ha sido encontrado!";
+        }
+    }
 }
 
 
@@ -70,3 +102,12 @@ tree.insert(44);
 tree.insert(1);
 tree.insert(1); // no lo puede agregar
 tree.insert(10); // no lo puede agregar
+console.log('------------');
+const nodo = tree.search2(14);
+console.log(nodo);
+console.log('------------');
+const nodo1 = tree.search2(17);
+console.log(nodo1);
+console.log('------------');
+const nodo2 = tree.search2(1);
+console.log(nodo2);
